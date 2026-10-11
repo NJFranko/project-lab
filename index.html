@@ -58,11 +58,9 @@ footer{margin-top:64px;color:var(--mute);border-top:2px solid var(--ink);padding
 </head>
 <body>
 <main>
-  <nav><span class="logo"><i>P</i>Project Lab</span><a href="#projects">Projects</a></nav>
 
-  <h1>Things I <span>build</span> to learn</h1>
-  <p class="lead">Small games and toys I make to practice coding. Pick one and play.</p>
-  <div class="stats"><span class="stat" id="count"></span><span class="stat">Always adding more</span></div>
+  <h1>My Stuff</h1>
+  
 
   <h2 class="sec" id="projects">Projects</h2>
   <div class="grid" id="grid"></div>
@@ -115,22 +113,6 @@ const projects = [
       }
     }
     el.querySelector('#re').onclick=start;start();
-  }
-},
-{
-  title:"Critter Clicker", tag:"Game", icon:"🐹", color:"#ffd6a5", blurb:"Feed the critter. Buy upgrades. Watch the numbers climb.",
-  mount(el){
-    let n=0,per=1,auto=0,cost=10,acost=25;
-    el.innerHTML=`<p class="big" id="n">0</p><button class="crit" id="c" aria-label="Feed critter">🐹</button>
-    <div><button class="btn" id="u"></button> <button class="btn" id="a"></button></div><p class="info" id="i"></p>`;
-    const $=s=>el.querySelector(s);
-    function draw(){$('#n').textContent=Math.floor(n);$('#u').textContent=`Bigger bites (+1): ${cost}`;
-      $('#a').textContent=`Helper (+1/sec): ${acost}`;$('#i').textContent=`${per} per click, ${auto} per second`}
-    $('#c').onclick=()=>{n+=per;draw()};
-    $('#u').onclick=()=>{if(n>=cost){n-=cost;per++;cost=Math.ceil(cost*1.5);draw()}};
-    $('#a').onclick=()=>{if(n>=acost){n-=acost;auto++;acost=Math.ceil(acost*1.6);draw()}};
-    const t=setInterval(()=>{n+=auto;draw()},1000);draw();
-    return ()=>clearInterval(t);
   }
 },
 {
